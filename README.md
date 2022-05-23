@@ -1,6 +1,6 @@
 # pypiu
 
-`pypiu` is the python client for Product InUse [API](https://studio.demo.productinuse.com/docs/api).
+`pypiu` is the Python client for Product [InUse](https://inuse.eu/) API.
 
 It provides the following main API methods:
 
@@ -13,9 +13,9 @@ It provides the following main API methods:
 
 For main end points such as:
 
-- [manufacturers](https://studio.demo.productinuse.com/docs/api#tag/Manufacturer)
-- [machine_models](https://studio.demo.productinuse.com/docs/api#tag/Machine-Model)
-- [machines](https://studio.demo.productinuse.com/docs/api#tag/Machine)
+- manufacturers
+- machine_models
+- machines
 - producers
 - sites
 - lines
@@ -34,7 +34,7 @@ For main end points such as:
 - alerts
 - sandboxes
 
-Please refer to [InUse API documentation](https://studio.demo.productinuse.com/docs/api) for more details
+Please refer to InUse API documentation (Accessible from the Studio) for more details.
 
 ## API versioning
 
@@ -58,6 +58,7 @@ inuse = InUse(base_url=f"https://studio.{manufacturer_code}.productinuse.com")
 inuse.login(input("Username? "), getpass.getpass("Password? "))
 
 # get my manufacturer
+# each endpoint is accessible by its name as an attribute of InUse instance
 manufacturer = inuse.manufacturers.list()[0]
 
 # create a new machine_model

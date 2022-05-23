@@ -4,7 +4,8 @@ Create a distribution:
 
 ```bash
 rm -rf dist/
-python -m build
+python setup.py sdist
+python setup.py bdist_wheel
 ```
 
 Upload to [Test PyPI](https://packaging.python.org/en/latest/guides/using-testpypi/) and verify things look right:
