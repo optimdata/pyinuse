@@ -1,6 +1,6 @@
 # pypiu
 
-`pypiu` is the Python client for Product [InUse](https://inuse.eu/) API.
+`pypiu` is the Python client for [InUse](https://inuse.eu/) API.
 
 It provides the following main API methods:
 

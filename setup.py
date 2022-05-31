@@ -31,7 +31,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    description="Official client for Product InUse",
+    description="Official client for InUse",
     install_requires=requirements,
     license="MIT license",
     long_description=readme + "\n\n" + history,
