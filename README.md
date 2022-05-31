@@ -1,6 +1,6 @@
-# pypiu
+# pyinuse
 
-`pypiu` is the Python client for [InUse](https://inuse.eu/) API.
+`pyinuse` is the official Python client for [InUse](https://inuse.eu/) API.
 
 It provides the following main API methods:
 
@@ -38,7 +38,7 @@ Please refer to InUse API documentation (Accessible from the Studio) for more de
 
 ## API versioning
 
-The actual API version is the internal API (not versioned) and is subject to changes. A versioned public API will be created in a later stage and used in this python client.
+The actual API version is the **internal** API (not versioned) and is subject to changes. A versioned public API will be created in a later stage and used in this python client.
 
 ## Example of usage
 
@@ -46,12 +46,12 @@ The actual API version is the internal API (not versioned) and is subject to cha
 # Library used to type a password in a secured way.
 import getpass
 # Client library for the InUse API.
-from pypiu import InUse
+from pyinuse import InUse
 # Library for logging
 import logging
 logging.basicConfig(format="%(asctime)s, %(name)s, %(levelname)s, %(message)s", level=logging.INFO)
 
-manufacturer_code="mycompany" # replace me with your manufacturer code
+manufacturer_code="mycompany" # replace with your manufacturer code
 
 # login
 inuse = InUse(base_url=f"https://studio.{manufacturer_code}.productinuse.com")
