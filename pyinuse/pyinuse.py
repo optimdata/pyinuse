@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from getpass import getpass
 import logging
-import os
 
 import requests
 
@@ -105,12 +104,12 @@ class InUse:
             {"email": username, "password": password},
         )
         token = ret.json()["token"]
-        logger.info(f"successfully authenticated")
+        logger.info("successfully authenticated")
         self.session.headers.update({"Authorization": f"JWT {token}"})
 
     def logout(self):
         del self.session
-        logger.info(f"successfully logged out")
+        logger.info("successfully logged out")
 
     def request(self, method, url, *args, **kwargs):
         if not self.session:
