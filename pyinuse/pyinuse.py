@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from getpass import getpass
 import logging
 import os
 
@@ -94,7 +96,9 @@ class InUse:
     def __repr__(self):
         return f"<InUse ({self.base_url})>"
 
-    def login(self, username, password):
+    def login(self, username, password=None):
+        if password is None:
+            password = getpass("Enter password:")
         self.session = requests.Session()
         ret = self.session.post(
             f"{self.base_url}/api-token-auth/",
@@ -114,6 +118,8 @@ class InUse:
                 "Client is not authenticated yet. Please call `login(username, password)` first."
             )
         prefix = {"internal": "/api"}[self.version]
-        return self.session.request(
+        response = self.session.request(
             method, f"{self.base_url}{prefix}/{url}", *args, **kwargs
         )
+        response.raise_for_status()
+        return response
