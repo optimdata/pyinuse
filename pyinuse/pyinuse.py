@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
+from getpass import getpass
 import logging
-import os
 
 import requests
 
@@ -94,19 +95,21 @@ class InUse:
     def __repr__(self):
         return f"<InUse ({self.base_url})>"
 
-    def login(self, username, password):
+    def login(self, username, password=None):
+        if password is None:
+            password = getpass("Enter password:")
         self.session = requests.Session()
         ret = self.session.post(
             f"{self.base_url}/api-token-auth/",
             {"email": username, "password": password},
         )
         token = ret.json()["token"]
-        logger.info(f"successfully authenticated")
+        logger.info("successfully authenticated")
         self.session.headers.update({"Authorization": f"JWT {token}"})
 
     def logout(self):
         del self.session
-        logger.info(f"successfully logged out")
+        logger.info("successfully logged out")
 
     def request(self, method, url, *args, **kwargs):
         if not self.session:
@@ -114,6 +117,8 @@ class InUse:
                 "Client is not authenticated yet. Please call `login(username, password)` first."
             )
         prefix = {"internal": "/api"}[self.version]
-        return self.session.request(
+        response = self.session.request(
             method, f"{self.base_url}{prefix}/{url}", *args, **kwargs
         )
+        response.raise_for_status()
+        return response

@@ -1,1 +1,1 @@
-from .pyinuse import InUse  # NO QA
+from .pyinuse import InUse  # NOQA
