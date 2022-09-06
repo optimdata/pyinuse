@@ -103,6 +103,7 @@ class InUse:
             f"{self.base_url}/api-token-auth/",
             {"email": username, "password": password},
         )
+        ret.raise_for_status()
         token = ret.json()["token"]
         logger.info("successfully authenticated")
         self.session.headers.update({"Authorization": f"JWT {token}"})
