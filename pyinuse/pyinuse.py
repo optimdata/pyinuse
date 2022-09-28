@@ -95,10 +95,12 @@ class InUse:
     def __repr__(self):
         return f"<InUse ({self.base_url})>"
 
-    def login(self, username, password=None):
+    def login(self, username, password=None, session_headers=None):
         if password is None:
             password = getpass("Enter password:")
         self.session = requests.Session()
+        if session_headers:
+            self.session.headers.update(session_headers)
         ret = self.session.post(
             f"{self.base_url}/api-token-auth/",
             {"email": username, "password": password},
